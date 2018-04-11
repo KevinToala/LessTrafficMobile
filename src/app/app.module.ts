@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AgmCoreModule } from '@agm/core';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyADH3m-qI1asuTPqk6kIM-VJSmJfVrOZuc'
     })
