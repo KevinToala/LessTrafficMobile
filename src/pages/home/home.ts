@@ -24,6 +24,7 @@ export class HomePage {
       let coords = position.coords;
 
       if(coords){
+
         this.lat = coords.latitude;
         this.lng = coords.longitude;
 
@@ -32,11 +33,16 @@ export class HomePage {
           longitude: this.lng
         };
 
+        this.toastCtrl.create({
+          message: 'Nueva posicion' + JSON.stringify(geolocalization),
+          duration: 1000
+        }).present();
+
         this.httpClient.post('http://localhost:8080/nodes', geolocalization).subscribe(data => {
           let message = "Nodo insertado" + JSON.stringify(data);
           this.toastCtrl.create({
             message: message,
-            duration: 1000
+            duration: 2000
           }).present();
 
           console.log(message);
