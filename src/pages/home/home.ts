@@ -20,6 +20,23 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
+    this.geolocation.getCurrentPosition().then((position: Geoposition) => {
+      let coords = position.coords;
+
+      if(coords) {
+        this.lat = coords.latitude;
+        this.lng = coords.longitude;
+      }
+
+      this.toastCtrl.create({
+        message: 'Nueva posicion',
+        duration: 10000
+      }).present();
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+
     this.geolocation.watchPosition({enableHighAccuracy: true}).subscribe((position: Geoposition) => {
       let coords = position.coords;
 
