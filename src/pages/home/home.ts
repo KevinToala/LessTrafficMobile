@@ -25,11 +25,14 @@ export class HomePage {
         longitude: this.lng
       };
 
-      this.httpClient.post('nodes', geolocalization).subscribe(data => {
+      this.httpClient.post('http://localhost:8080/nodes', geolocalization).subscribe(data => {
+        let message = "Nodo insertado" + JSON.stringify(data);
         this.toastCtrl.create({
-          message: "Nodo insertado" + JSON.stringify(data),
+          message: message,
           duration: 1000
-        })
+        }).present();
+
+        console.log(message);
       });
     });
   }
