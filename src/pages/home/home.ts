@@ -55,7 +55,7 @@ export class HomePage {
           duration: 1000
         }).present();
 
-        this.httpClient.post('http://localhost:8080/nodes', geolocalization).subscribe(data => {
+        this.httpClient.post('http://192.168.43.202:8080/nodes', geolocalization).subscribe(data => {
           let message = "Nodo insertado" + JSON.stringify(data);
           this.toastCtrl.create({
             message: message,
