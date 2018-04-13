@@ -33,11 +33,6 @@ export class HomePage {
           longitude: this.lng
         };
 
-        this.toastCtrl.create({
-          message: 'Nueva posicion' + JSON.stringify(geolocalization),
-          duration: 1000
-        }).present();
-
         this.httpClient.post('http://192.168.43.202:8080/nodes', geolocalization).subscribe(data => {
           let message = "Nodo insertado" + JSON.stringify(data);
           this.toastCtrl.create({
